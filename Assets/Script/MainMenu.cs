@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Login");
     }
 
+    public void Register()
+    {
+        SceneManager.LoadScene("Register");
+    }
+
     public void leaderboard()
     {
         SceneManager.LoadScene("Leaderboard");
