@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovableObs : MonoBehaviour
 {
-	public float distance = 5f; //Distance that moves the object
+	public float distance = 0.5f; //Distance that moves the object
 	public bool horizontal = true; //If the movement is horizontal or vertical
-	public float speed = 3f;
+	public float speed = 0.5f;
 	public float offset = 0f; //If yo want to modify the position at the start 
 
 	private bool isForward = true; //If the movement is out

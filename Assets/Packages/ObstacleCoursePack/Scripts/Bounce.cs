@@ -15,19 +15,20 @@ public class Bounce : MonoBehaviour
 			Debug.DrawRay(contact.point, contact.normal, Color.white);
 			if (collision.gameObject.tag == "Player")
 			{
+				Debug.Log("kena");
 				hitDir = contact.normal;
 				collision.gameObject.GetComponent<CharacterControls>().HitPlayer(-hitDir * force, stunTime);
 				return;
 			}
 		}
-		/*if (collision.relativeVelocity.magnitude > 2)
-		{
-			if (collision.gameObject.tag == "Player")
-			{
-				//Debug.Log("Hit");
-				collision.gameObject.GetComponent<CharacterControls>().HitPlayer(-hitDir*force, stunTime);
-			}
-			//audioSource.Play();
-		}*/
-	}
+        if (collision.relativeVelocity.magnitude > 2)
+        {
+            if (collision.gameObject.tag == "Player")
+            {
+                //Debug.Log("Hit");
+                collision.gameObject.GetComponent<CharacterControls>().HitPlayer(-hitDir * force, stunTime);
+            }
+            //audioSource.Play();
+        }
+    }
 }
