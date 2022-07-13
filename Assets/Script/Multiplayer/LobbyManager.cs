@@ -39,8 +39,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (roomInputField.text.Length >= 1)
         {
             PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 3, BroadcastPropsChangeToAll = true });
-
         }
+
+        int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
+        playerData.Add("CharacterSelected", characterChosen);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
     }
 
     public override void OnJoinedRoom()
@@ -50,11 +53,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
         UpdatePlayerList();
         //base.OnJoinedRoom();
-
-        int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
-        Debug.Log(characterChosen);
-        playerData.Add("CharacterSelected", characterChosen);
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -88,6 +86,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom(string roomName)
     {
+        int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
+        playerData.Add("CharacterSelected", characterChosen);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
         PhotonNetwork.JoinRoom(roomName);
     }
 
