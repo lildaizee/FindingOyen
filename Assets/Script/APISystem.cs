@@ -127,7 +127,7 @@ public class APISystem : MonoBehaviour
                 if (password.text == containerA.message.id)
                 {
                     Debug.Log("Success");
-                    Application.LoadLevel("Level 1 - GD");
+                    Application.LoadLevel("Multiplayer");
                 }
                 else
                 {
