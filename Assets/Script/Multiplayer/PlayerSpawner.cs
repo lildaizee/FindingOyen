@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Oyen.Character;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class PlayerSpawner : MonoBehaviour
 
         int randomNumber = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[randomNumber];
-        PhotonNetwork.Instantiate(characterPrefab.name, spawnPoint.position, Quaternion.identity);
+        GameObject go = PhotonNetwork.Instantiate(characterPrefab.name, spawnPoint.position, Quaternion.identity);
+        //go.GetComponent<CharacterManager>().SetCharacterChoice();
     }
 }

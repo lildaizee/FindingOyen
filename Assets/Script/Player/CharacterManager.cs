@@ -29,7 +29,9 @@ namespace Oyen.Character
 
         public void SetCharacterChoice()
         {
-            characterChoice = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"];
+            CharacterChoice = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"];
+            Debug.Log(characterChoice + " " + CharacterChoice);
+    
         }
 
         #region Accessor
