@@ -60,6 +60,8 @@ public class CharacterSelection : MonoBehaviour
     public void ConfirmButton()
     {
         PlayerPrefs.SetInt("CharacterSelected", index);
+
         SceneManager.LoadScene("Multiplayer");
     }
+
 }

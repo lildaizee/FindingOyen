@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -25,6 +26,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Transform playerItemParent;
 
     public GameObject playButton;
+
+    Hashtable playerData = new Hashtable();
 
     private void Start()
     {
@@ -108,11 +111,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         playerItemsList.Clear();
 
-        //if (PhotonNetwork.CurrentRoom == null)
-        //{
-        //    return;
-        //}
-
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
@@ -125,8 +123,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
 
             playerItemsList.Add(newPlayerItem);
-
         }
+
+        int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
+        playerData.Add("CharacterSelected", characterChosen);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)

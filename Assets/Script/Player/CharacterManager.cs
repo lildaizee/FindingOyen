@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace Oyen.Character
 {
@@ -23,12 +24,12 @@ namespace Oyen.Character
 
         private void Start()
         {
-            SetCharacterChoice(0);
+            SetCharacterChoice();
         }
 
-        public void SetCharacterChoice(int value)
+        public void SetCharacterChoice()
         {
-            CharacterChoice = value;
+            characterChoice = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"];
         }
 
         #region Accessor
