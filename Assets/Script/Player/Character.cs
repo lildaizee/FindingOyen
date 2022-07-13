@@ -5,6 +5,9 @@ using UnityEngine;
 namespace Oyen.Character
 {
     using Photon.Pun;
+    using StarterAssets;
+    using UnityEngine.InputSystem;
+
     /// <summary>
     /// This handle photon related for character controller
     /// </summary>
@@ -16,6 +19,12 @@ namespace Oyen.Character
         [SerializeField] Cinemachine.CinemachineVirtualCamera CMCamera;
         [SerializeField] private bool isMine;
         [SerializeField] private Transform cameraFollowTransform;
+
+        [Space(20)]
+        [SerializeField] private ThirdPersonController thirdPersonController;
+        [SerializeField] private BasicRigidBodyPush basicRigidBodyPush;
+        [SerializeField] private StarterAssetsInputs assetsInputs;
+        [SerializeField] private PlayerInput playerInput;
         #endregion
 
         public void Initialize()
@@ -26,9 +35,20 @@ namespace Oyen.Character
             if (CMCamera == null)
                CMCamera = GameObject.Find("CMVirtualCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
-            if (!photonView.IsMine) return;
+            if (!photonView.IsMine) 
+            {
+                Destroy(basicRigidBodyPush);
+                Destroy(assetsInputs);
+                Destroy(thirdPersonController);
+                Destroy(playerInput);
 
-            CMCamera.Follow = cameraFollowTransform;
+                basicRigidBodyPush = null;
+                assetsInputs = null;
+                thirdPersonController = null;
+                playerInput = null;
+            }
+            else
+                CMCamera.Follow = cameraFollowTransform;
         }
 
         #region Accessor

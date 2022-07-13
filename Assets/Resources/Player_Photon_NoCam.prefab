@@ -6305,6 +6305,11 @@ MonoBehaviour:
   CMCamera: {fileID: 0}
   isMine: 0
   cameraFollowTransform: {fileID: 1362492384717640527}
+  controller: {fileID: 6637901983081622041}
+  thirdPersonController: {fileID: 6637901983081622040}
+  basicRigidBodyPush: {fileID: 3530540597193146595}
+  assetsInputs: {fileID: 6967296789135636079}
+  playerInput: {fileID: 6637901983081622047}
 --- !u!114 &3769147263145832394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6360,7 +6365,7 @@ MonoBehaviour:
     SynchronizeType: 1
     Name: MotionSpeed
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &282379339311577571
 MonoBehaviour:
