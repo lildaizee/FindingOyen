@@ -6303,6 +6303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraMain: {fileID: 0}
   CMCamera: {fileID: 0}
+  isMine: 0
+  cameraFollowTransform: {fileID: 1362492384717640527}
 --- !u!114 &3769147263145832394
 MonoBehaviour:
   m_ObjectHideFlags: 0

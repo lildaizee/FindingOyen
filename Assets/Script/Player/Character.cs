@@ -14,6 +14,8 @@ namespace Oyen.Character
         private PhotonView photonView;
         [SerializeField] private Camera cameraMain;
         [SerializeField] Cinemachine.CinemachineVirtualCamera CMCamera;
+        [SerializeField] private bool isMine;
+        [SerializeField] private Transform cameraFollowTransform;
         #endregion
 
         public void Initialize()
@@ -22,10 +24,11 @@ namespace Oyen.Character
             if (cameraMain == null)
                 cameraMain = Camera.main;
             if (CMCamera == null)
-                GameObject.Find("CMVirtualCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
+               CMCamera = GameObject.Find("CMVirtualCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
             if (!CheckPhotonViewMine()) return;
 
+            CMCamera.Follow = cameraFollowTransform;
         }
 
         #region Accessor
@@ -33,7 +36,6 @@ namespace Oyen.Character
 
         public bool CheckPhotonViewMine()
         {
-            bool isMine;
             return isMine = photonView.IsMine ? photonView.IsMine : !photonView.IsMine;
         }
         #endregion
