@@ -26,18 +26,13 @@ namespace Oyen.Character
             if (CMCamera == null)
                CMCamera = GameObject.Find("CMVirtualCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
-            if (!CheckPhotonViewMine()) return;
+            if (!photonView.IsMine) return;
 
             CMCamera.Follow = cameraFollowTransform;
         }
 
         #region Accessor
         public PhotonView PhotonView => photonView;
-
-        public bool CheckPhotonViewMine()
-        {
-            return isMine = photonView.IsMine ? photonView.IsMine : !photonView.IsMine;
-        }
         #endregion
     }
 }
