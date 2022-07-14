@@ -16770,6 +16770,7 @@ MonoBehaviour:
   timerText: {fileID: 142690700}
   api: {fileID: 0}
   gameOverScreen: {fileID: 0}
+  SC: {fileID: 0}
 --- !u!114 &1350194776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23423,6 +23424,7 @@ MonoBehaviour:
   timerText: {fileID: 142690700}
   api: {fileID: 1543882828}
   gameOverScreen: {fileID: 0}
+  SC: {fileID: 0}
 --- !u!1001 &1843145580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27159,6 +27161,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4255911999368294849, guid: c372488aa61c16842b61a8617c74e681, type: 3}
+      propertyPath: SC
+      value: 
+      objectReference: {fileID: 1604671285921097289}
+    - target: {fileID: -4255911999368294849, guid: c372488aa61c16842b61a8617c74e681, type: 3}
       propertyPath: api
       value: 
       objectReference: {fileID: 1543882828}
@@ -27240,6 +27246,17 @@ PrefabInstance:
       objectReference: {fileID: 1543882828}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c372488aa61c16842b61a8617c74e681, type: 3}
+--- !u!114 &1604671285921097289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4916969630154883904, guid: c372488aa61c16842b61a8617c74e681, type: 3}
+  m_PrefabInstance: {fileID: 1604671285921097288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a75ce80251e058488d5ae434b8922e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6401299921920719827
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/CreateRoom.unity
-    guid: b1ede8aaab7a4434c9a73519d7a86be5
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 81eeb59ded5aef04a9ef0a48b7334d6c
@@ -23,19 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChooseCharacter.unity
     guid: 226e7131e3bf69c4baf17d980521366e
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Storytelling.unity
     guid: 4a9dfc6ee4b76a04c9ac1780abc22b17
   - enabled: 1
     path: Assets/Scenes/Level 1 - GD.unity
     guid: 452eb59f9f59ef64d8de7dc09ffcde94
-  - enabled: 0
-    path: Assets/Scenes/Level 2 - GD.unity
-    guid: 56d2b6be9843df9409ef3a2bcc1ddcd1
   - enabled: 1
     path: Assets/Scenes/Level_3_-_GD (1).unity
     guid: af5725e073eb4634e9cd55ca8e4e7322
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: da658cdeb756f024897e6a552dac2d27
   m_configObjects: {}

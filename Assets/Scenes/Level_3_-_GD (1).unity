@@ -60502,7 +60502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fda74aedd196d4bb88827719723115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverScreen: {fileID: 0}
+  gameOverScreen: {fileID: 1891099760}
 --- !u!4 &2108172916
 Transform:
   m_ObjectHideFlags: 0

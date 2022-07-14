@@ -946,6 +946,8 @@ MonoBehaviour:
   timeValue: 90
   timerText: {fileID: 0}
   api: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  SC: {fileID: 0}
 --- !u!1 &932656665884395467
 GameObject:
   m_ObjectHideFlags: 0
