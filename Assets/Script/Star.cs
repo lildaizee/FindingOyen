@@ -11,7 +11,7 @@ public class Star : MonoBehaviourPunCallbacks
 {
     public int totalScore;
     PhotonView starPV;
-    //public AudioClip scoreSound;
+    public AudioClip scoreSound;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class Star : MonoBehaviourPunCallbacks
 
             Debug.Log("point + 1");
             //ScoreManager.instance.AddPoint();
-            //AudioSource.PlayClipAtPoint(scoreSound, transform.position);
+            AudioSource.PlayClipAtPoint(scoreSound, transform.position);
             GameFlow.totalCoins += 1;
             Debug.Log(GameFlow.totalCoins);
             //Destroy(gameObject);

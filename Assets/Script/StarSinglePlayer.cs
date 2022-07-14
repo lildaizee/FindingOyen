@@ -9,7 +9,7 @@ public class StarSinglePlayer : MonoBehaviour
 {
     public int totalScore;
     
-    //public AudioClip scoreSound;
+    public AudioClip scoreSound;
 
     void Start()
     {
@@ -34,7 +34,7 @@ public class StarSinglePlayer : MonoBehaviour
 
             Debug.Log("point + 1");
             //ScoreManager.instance.AddPoint();
-            //AudioSource.PlayClipAtPoint(scoreSound, transform.position);
+            AudioSource.PlayClipAtPoint(scoreSound, transform.position);
             GameFlow.totalCoins += 1;
             Debug.Log(GameFlow.totalCoins);
             Destroy(gameObject);
