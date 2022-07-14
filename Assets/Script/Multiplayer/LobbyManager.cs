@@ -42,6 +42,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
 
         int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
+        Debug.Log("Create: Choose " + characterChosen);
         playerData.Add("CharacterSelected", characterChosen);
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
     }
@@ -87,7 +88,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void JoinRoom(string roomName)
     {
         int characterChosen = PlayerPrefs.GetInt("CharacterSelected");
+        Debug.Log("Join: Choose " + characterChosen);
         playerData.Add("CharacterSelected", characterChosen);
+        //playerData["CharacterSelected"] = characterChosen;
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerData);
         PhotonNetwork.JoinRoom(roomName);
     }
@@ -136,6 +139,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         UpdatePlayerList();
         //base.OnPlayerEnteredRoom(newPlayer);
+
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -146,13 +150,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 3)
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         {
             playButton.SetActive(true);
         }
         else
         {
             playButton.SetActive(false);
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            int a = PlayerPrefs.GetInt("CharacterSelected");
+            Debug.Log(a);
         }
     }
 

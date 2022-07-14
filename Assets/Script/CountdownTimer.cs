@@ -21,10 +21,8 @@ public class CountdownTimer : MonoBehaviour
 
     void Start()
     {
-        //currentTime = startingTime;
         timerText = GameObject.Find("Countdown").GetComponent<Text>();
         api = GameObject.Find("API").GetComponent<APISystem>();
-        //SC = GameObject.Find("")
     }
 
     void Update()
@@ -36,14 +34,8 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             timeValue = 0;
-            //StartCoroutine(saveScore());
-
         }
         DisplayTime(timeValue);
-
-
-        //currentTime -= 1 * Time.deltaTime;
-        //countdownText.text = currentTime.ToString("0");
     }
 
     void DisplayTime(float timeToDisplay)
@@ -85,12 +77,7 @@ public class CountdownTimer : MonoBehaviour
         Debug.Log("Game Over");
         PlayerManager.isGameOver = true;
 
-        //FindObjectOfType<APISystem>().InsertPlayerActivity(PlayerPrefs.GetString("username"), "Score_Point_Endless", "add", ScoreManager.instance.ToString());
         FindObjectOfType<APISystem>().InsertPlayerActivity(PlayerPrefs.GetString("username"), "myra_endless_scorepoint", "add", GameFlow.totalCoins.ToString());
-
-
-
-        //gameObject.SetActive(false);
     }
 
     public void changeLevel()

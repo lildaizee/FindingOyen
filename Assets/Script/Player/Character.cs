@@ -14,10 +14,9 @@ namespace Oyen.Character
     public class Character : MonoBehaviour
     {
         #region Private Fields
-        private PhotonView photonView;
+        [SerializeField] private PhotonView photonView;
         [SerializeField] private Camera cameraMain;
         [SerializeField] Cinemachine.CinemachineVirtualCamera CMCamera;
-        [SerializeField] private bool isMine;
         [SerializeField] private Transform cameraFollowTransform;
 
         [Space(20)]
@@ -29,7 +28,8 @@ namespace Oyen.Character
 
         public void Initialize()
         {
-            photonView = GetComponent<PhotonView>();
+            if(photonView == null)
+                photonView = GetComponent<PhotonView>();
             if (cameraMain == null)
                 cameraMain = Camera.main;
             if (CMCamera == null)

@@ -6333,9 +6333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fcf05efff92f9249a60c14e768f13e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 3769147263145832394}
   cameraMain: {fileID: 0}
   CMCamera: {fileID: 0}
-  isMine: 0
   cameraFollowTransform: {fileID: 1362492384717640527}
   thirdPersonController: {fileID: 6637901983081622040}
   basicRigidBodyPush: {fileID: 3530540597193146595}

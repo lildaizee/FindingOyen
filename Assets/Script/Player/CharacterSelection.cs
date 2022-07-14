@@ -60,8 +60,23 @@ public class CharacterSelection : MonoBehaviour
     public void ConfirmButton()
     {
         PlayerPrefs.SetInt("CharacterSelected", index);
-
+        int a = PlayerPrefs.GetInt("CharacterSelected");
+        Debug.Log(a);
         SceneManager.LoadScene("Multiplayer");
     }
 
+    void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+
+            PlayerPrefs.SetInt("CharacterSelected", index);
+            Debug.Log(index);
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            int a = PlayerPrefs.GetInt("CharacterSelected");
+            Debug.Log(a);
+        }
+    }
 }
