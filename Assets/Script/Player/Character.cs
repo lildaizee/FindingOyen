@@ -28,14 +28,14 @@ namespace Oyen.Character
 
         public void Initialize()
         {
-            if(photonView == null)
+            if (photonView == null)
                 photonView = GetComponent<PhotonView>();
             if (cameraMain == null)
                 cameraMain = Camera.main;
             if (CMCamera == null)
                CMCamera = GameObject.Find("CMVirtualCamera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
 
-            if (!photonView.IsMine) 
+            if (!photonView.IsMine)
             {
                 Destroy(basicRigidBodyPush);
                 Destroy(assetsInputs);
@@ -48,7 +48,9 @@ namespace Oyen.Character
                 playerInput = null;
             }
             else
+            {
                 CMCamera.Follow = cameraFollowTransform;
+            }
         }
 
         #region Accessor

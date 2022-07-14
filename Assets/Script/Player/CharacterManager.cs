@@ -8,9 +8,9 @@ namespace Oyen.Character
     /// <summary>
     /// This handle higher level for character controller
     /// </summary>
-    public class CharacterManager : MonoBehaviour
+    public class CharacterManager : MonoBehaviourPunCallbacks
     {
-        #region Private Region
+        #region Serialized Field
         [Header("Settings")]
         [SerializeField] private int characterChoice = 0;
         [SerializeField] private Character character;
@@ -22,6 +22,10 @@ namespace Oyen.Character
         [SerializeField] private List<Avatar> characterAvatar;
         #endregion
 
+        #region Private Field
+        private Photon.Realtime.Player player;
+        #endregion
+
         private void Start()
         {
             SetCharacterChoice();
@@ -29,16 +33,19 @@ namespace Oyen.Character
 
         public void SetCharacterChoice()
         {
+            player = photonView.Controller;
+            CharacterChoice = (int)player.CustomProperties["CharacterSelected"];
+
+            return;
             if (!character.PhotonView.IsMine)
             {
-                CharacterChoice = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"];
-                Debug.Log(character.PhotonView.IsMine + " Choose " + CharacterChoice);
+                CharacterChoice = (int)player.CustomProperties["CharacterSelected"];
+                //CharacterChoice = (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"];
             }
             else
             {
-                CharacterChoice = PlayerPrefs.GetInt("CharacterSelected");
-                Debug.Log(character.PhotonView.IsMine + " Choose " + CharacterChoice);
-                Debug.Log(character.PhotonView.IsMine + " Choose " + (int)PhotonNetwork.LocalPlayer.CustomProperties["CharacterSelected"] + " on network");
+                //CharacterChoice = PlayerPrefs.GetInt("CharacterSelected");
+                CharacterChoice = (int)player.CustomProperties["CharacterSelected"];
             }
         }
 
