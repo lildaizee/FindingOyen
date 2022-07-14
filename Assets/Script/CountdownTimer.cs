@@ -23,6 +23,13 @@ public class CountdownTimer : MonoBehaviour
     {
         timerText = GameObject.Find("Countdown").GetComponent<Text>();
         api = GameObject.Find("API").GetComponent<APISystem>();
+        SC = GetComponent<SaveScore>();
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_3_-_GD (1)"))
+        {
+            gameOverScreen = GameObject.Find("GameOverPanel");
+            gameOverScreen.SetActive(false);
+        }
     }
 
     void Update()
