@@ -33,7 +33,7 @@ namespace Oyen.Character
 
         public void SetCharacterChoice()
         {
-            player = photonView.Controller;
+            player = character.PhotonView.Controller;
             CharacterChoice = (int)player.CustomProperties["CharacterSelected"];
 
             return;
