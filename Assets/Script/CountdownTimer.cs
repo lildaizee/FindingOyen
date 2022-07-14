@@ -49,10 +49,11 @@ public class CountdownTimer : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            //SceneManager.LoadScene("Level 2 - GD");
-            //StartCoroutine(SC.saveScore());
-            //SC.saveScore();
-            StartCoroutine(saveScore());
+            SceneManager.LoadScene("Level_3_-_GD (1)");
+            StartCoroutine(SC.saveScore());
+            SC.saveScore();
+            StartCoroutine(SaveScore());
+            //changeLevel();
         }
         else if(timeToDisplay > 0)
         {
@@ -65,7 +66,7 @@ public class CountdownTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    IEnumerator saveScore()
+    IEnumerator SaveScore()
     {
         yield return new WaitForSeconds(.1f);
 
@@ -80,5 +81,10 @@ public class CountdownTimer : MonoBehaviour
 
 
         //gameObject.SetActive(false);
+    }
+
+    public void changeLevel()
+    {
+        SceneManager.LoadScene("Level_3_-_GD (1)");
     }
 }
