@@ -21,6 +21,8 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         //currentTime = startingTime;
+        timerText = GameObject.Find("Countdown").GetComponent<Text>();
+        api = GameObject.Find("API").GetComponent<APISystem>();
     }
 
     void Update()
