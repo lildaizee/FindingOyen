@@ -14,15 +14,17 @@ public class CountdownTimer : MonoBehaviour
     public float timeValue = 90;
     public Text timerText;
     public APISystem api;
+    public GameObject gameOverScreen;
 
 
-    SaveScore SC;
+    public SaveScore SC;
 
     void Start()
     {
         //currentTime = startingTime;
         timerText = GameObject.Find("Countdown").GetComponent<Text>();
         api = GameObject.Find("API").GetComponent<APISystem>();
+        //SC = GameObject.Find("")
     }
 
     void Update()
@@ -49,11 +51,19 @@ public class CountdownTimer : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            SceneManager.LoadScene("Level_3_-_GD (1)");
-            StartCoroutine(SC.saveScore());
-            SC.saveScore();
-            StartCoroutine(SaveScore());
-            //changeLevel();
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_3_-_GD (1)"))
+            {
+                timeToDisplay = 0;
+                StartCoroutine(SC.saveScore());
+                SC.saveScore();
+                StartCoroutine(SaveScore());
+                gameOverScreen.SetActive(true);
+            }
+            else
+            {
+                SceneManager.LoadScene("Level_3_-_GD (1)");
+            }
+
         }
         else if(timeToDisplay > 0)
         {
