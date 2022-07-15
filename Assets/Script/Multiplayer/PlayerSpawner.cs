@@ -4,41 +4,51 @@ using UnityEngine;
 using Photon.Pun;
 using Oyen.Character;
 
-public class PlayerSpawner : MonoBehaviour
+namespace Oyen.Networking
 {
-    public GameObject[] playerPrefabs;
-    public Transform[] spawnPoints;
-
-    [Space(10)]
-    [SerializeField] private GameObject characterPrefab;
-
-    private void Start()
+    public class PlayerSpawner : MonoBehaviour
     {
-        SpawnCharacter();
-    }
+        #region Serialized Field
+        [Header("Settings")]
+        [SerializeField] private bool doRandomSpawn = false;
+        [SerializeField] private GameObject characterPrefab;
+        #endregion
 
-    /// <summary>
-    /// Not in used. Please delete this in future
-    /// </summary>
-    private void SpawnAvatar()
-    {
-        int randomNumber = Random.Range(0, spawnPoints.Length);
-        Transform spawnPoint = spawnPoints[randomNumber];
-        GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
-        PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);
-    }
+        #region Private Field
+        private int index = 0;
+        #endregion
 
-    private void SpawnCharacter()
-    {
-        if (spawnPoints.Length == 0)
+        #region Public Field
+        public Transform[] spawnPointsTransform;
+        #endregion
+
+        private void Start()
         {
-            Debug.LogWarning("Spawn point is 0. Please add at least one spawn point");
-            return;
+             SpawnCharacter();
         }
 
-        int randomNumber = Random.Range(0, spawnPoints.Length);
-        Transform spawnPoint = spawnPoints[randomNumber];
-        GameObject go = PhotonNetwork.Instantiate(characterPrefab.name, spawnPoint.position, Quaternion.identity);
-        //go.GetComponent<CharacterManager>().SetCharacterChoice();
+        private void SpawnCharacter()
+        {
+            if (!doRandomSpawn)
+            {
+                if(spawnPointsTransform.Length == 3)
+                {
+                    index = PhotonNetwork.LocalPlayer.ActorNumber -1;
+                    PhotonNetwork.Instantiate(characterPrefab.name, spawnPointsTransform[index].position, Quaternion.identity);
+                }
+                else
+                {
+                    doRandomSpawn = true;
+                    RandomSpawn();
+                }
+            }
+        }
+
+        private void RandomSpawn()
+        {
+            int randomNumber = Random.Range(0, spawnPointsTransform.Length);
+            Transform spawnPoint = spawnPointsTransform[randomNumber];
+            PhotonNetwork.Instantiate(characterPrefab.name, spawnPoint.position, Quaternion.identity);
+        }
     }
 }
