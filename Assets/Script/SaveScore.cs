@@ -9,7 +9,7 @@ public class SaveScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        api = GameObject.Find("API").GetComponent<APISystem>();
     }
 
     // Update is called once per frame

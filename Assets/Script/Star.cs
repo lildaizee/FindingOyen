@@ -1,19 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Star : MonoBehaviour
+/// <summary>
+/// This script is for multiplayer, another script for single player is at another location
+/// </summary>
+
+public class Star : MonoBehaviourPunCallbacks
 {
     public int totalScore;
-    //public AudioClip scoreSound;
+    PhotonView starPV;
+    public AudioClip scoreSound;
 
     void Start()
     {
+        starPV = GetComponent<PhotonView>();
+
         //GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 5, 0);
     }
 
     void Update()
     {
+
 
     }
 
@@ -21,15 +30,33 @@ public class Star : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Photon.Pun.PhotonView photonView = other.GetComponent<Photon.Pun.PhotonView>();
+            
+            if (!photonView.IsMine)
+            {
+                return;
+
+            }
             //GameFlow.totalCoins += 1;
             // Debug.Log(GameFlow.totalCoins);
 
             Debug.Log("point + 1");
             //ScoreManager.instance.AddPoint();
-            //AudioSource.PlayClipAtPoint(scoreSound, transform.position);
+            AudioSource.PlayClipAtPoint(scoreSound, transform.position);
             GameFlow.totalCoins += 1;
             Debug.Log(GameFlow.totalCoins);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            starPV.RPC(nameof(DestroyStars), RpcTarget.All);
         }
+    }
+
+    [PunRPC]
+    private void DestroyStars()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            return;
+        }
+        PhotonNetwork.Destroy(gameObject);
     }
 }

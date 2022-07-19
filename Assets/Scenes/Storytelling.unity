@@ -267,16 +267,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Finding Oyen is an exploration multiplayer game where players can compete
+  m_Text: Finding Oyen is an exploration multiplayer game where players can compete
     against other players to collect as many coins as possible and save the cat (oyen)
-    while going through all the obstacles and enemies that are available in the game''s
-    environment. If the player''s lives reach 0, they will freeze for a few seconds.
-
-
-    (to
-    be change)
-
-'
+    while going through all the obstacles and enemies that are available in the game's
+    environment.
 --- !u!222 &340178048
 CanvasRenderer:
   m_ObjectHideFlags: 0

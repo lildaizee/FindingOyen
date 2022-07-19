@@ -14,13 +14,22 @@ public class CountdownTimer : MonoBehaviour
     public float timeValue = 90;
     public Text timerText;
     public APISystem api;
+    public GameObject gameOverScreen;
 
 
-    SaveScore SC;
+    public SaveScore SC;
 
     void Start()
     {
-        //currentTime = startingTime;
+        timerText = GameObject.Find("Countdown").GetComponent<Text>();
+        api = GameObject.Find("API").GetComponent<APISystem>();
+        SC = GetComponent<SaveScore>();
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_3_-_GD (1)"))
+        {
+            gameOverScreen = GameObject.Find("GameOverPanel");
+            gameOverScreen.SetActive(false);
+        }
     }
 
     void Update()
@@ -32,14 +41,8 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             timeValue = 0;
-            //StartCoroutine(saveScore());
-
         }
         DisplayTime(timeValue);
-
-
-        //currentTime -= 1 * Time.deltaTime;
-        //countdownText.text = currentTime.ToString("0");
     }
 
     void DisplayTime(float timeToDisplay)
@@ -47,10 +50,19 @@ public class CountdownTimer : MonoBehaviour
         if (timeToDisplay < 0)
         {
             timeToDisplay = 0;
-            //SceneManager.LoadScene("Level 2 - GD");
-            //StartCoroutine(SC.saveScore());
-            //SC.saveScore();
-            StartCoroutine(saveScore());
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Level_3_-_GD (1)"))
+            {
+                timeToDisplay = 0;
+                StartCoroutine(SC.saveScore());
+                SC.saveScore();
+                StartCoroutine(SaveScore());
+                gameOverScreen.SetActive(true);
+            }
+            else
+            {
+                SceneManager.LoadScene("Level_3_-_GD (1)");
+            }
+
         }
         else if(timeToDisplay > 0)
         {
@@ -63,7 +75,7 @@ public class CountdownTimer : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    IEnumerator saveScore()
+    IEnumerator SaveScore()
     {
         yield return new WaitForSeconds(.1f);
 
@@ -72,11 +84,11 @@ public class CountdownTimer : MonoBehaviour
         Debug.Log("Game Over");
         PlayerManager.isGameOver = true;
 
-        //FindObjectOfType<APISystem>().InsertPlayerActivity(PlayerPrefs.GetString("username"), "Score_Point_Endless", "add", ScoreManager.instance.ToString());
         FindObjectOfType<APISystem>().InsertPlayerActivity(PlayerPrefs.GetString("username"), "myra_endless_scorepoint", "add", GameFlow.totalCoins.ToString());
+    }
 
-
-
-        //gameObject.SetActive(false);
+    public void changeLevel()
+    {
+        SceneManager.LoadScene("Level_3_-_GD (1)");
     }
 }
